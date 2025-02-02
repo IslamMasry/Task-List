@@ -9,7 +9,7 @@
 - [Setup Instructions](#setup-instructions)
 - [Project Structure](#project-structure)
 - [Usage](#usage)
-- [Contributors](#contributing)
+- [Contributors](#contributors)
 
 
 ---

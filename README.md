@@ -1,8 +1,8 @@
 # Task Manager - A Firebase-Powered Task Management Application
 
-![Task Manager Screenshot](screenshots/1.png)
-![Task Manager Screenshot](screenshots/2.png)
-![Task Manager Screenshot](screenshots/3.png)
+![Task Manager Screenshot](screenshots/1.jpg)
+![Task Manager Screenshot](screenshots/2.jpg)
+![Task Manager Screenshot](screenshots/3.jpg)
 
 ## Table of Contents
 - [Introduction](#introduction)

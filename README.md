@@ -1,86 +1,193 @@
-# Task Management Application
+# Task Manager - A Firebase-Powered Task Management Application
 
-A modern task management application built with React, Firebase, and Tailwind CSS.
+![Task Manager Screenshot](screenshot.png) <!-- Add a screenshot if available -->
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Contributors](#contributing)
+
+
+---
+
+## Introduction
+
+Task Manager is a modern, responsive web application built with **React** and **Firebase**. This application allows users to manage their tasks efficiently. It provides a clean and intuitive interface for creating, updating, and deleting tasks, with real-time synchronization to Firebase Firestore. The application also includes features like task prioritization, overdue task highlighting, search, and task changes log.
+
+---
 
 ## Features
 
-- Create, read, update, and delete tasks
-- Set task priority (Low, Medium, High)
-- Set due dates for tasks
-- Mark tasks as completed
-- Automatic overdue task detection
-- Sort tasks by priority or due date
-- Search functionality
-- Responsive design
-- Real-time updates using Firebase
+### Core Features
+- **Task Management (CRUD Operations):**
+  - Create new tasks with title, description, priority, and due date.
+  - Update existing tasks.
+  - Delete tasks with confirmation.
+- **Real-Time Updates:**
+  - Tasks are synchronized in real-time using Firebase Firestore.
+- **Overdue Task Indicator:**
+  - Automatically marks tasks as overdue if the due date has passed.
+  - Highlights overdue tasks with a red background.
+- **Task Sorting:**
+  - Sort tasks by priority (Low, Medium, High), due date (ascending/descending), or both together.
+- **Task Completion:**
+  - Mark tasks as completed.
+  - Completed tasks are visually indicated with a strikethrough.
+- **Responsive Design:**
+  - Works seamlessly on desktop, tablet, and mobile devices.
 
-## Tech Stack
+### Bonus Features (Optional)
+- **Search Functionality:**
+  - Filter tasks by title or description using a search bar.
+- **Pagination:**
+  - Display tasks in paginated lists with configurable items per page.
+- **Task History:**
+  - Keep a log of changes made to tasks (e.g., edited title, changed due date).
 
-- React
-- TypeScript
-- Firebase (Firestore)
-- Tailwind CSS
-- date-fns
-- react-hot-toast
-- Lucide React icons
+---
+
+## Technologies Used
+
+### Frontend
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for styling.
+- **React Icons**: For adding icons to the UI.
+
+### Backend
+- **Firebase Firestore**: A NoSQL cloud database for real-time data synchronization.
+
+
+### Development Tools
+- **Vite**: A fast build tool for modern web applications.
+- **ESLint**: For code linting and maintaining code quality.
+- **Prettier**: For code formatting.
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm (v8 or higher)
+- Firebase account (for Firestore)
+
+### Steps to Run the Project
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/IslamMasry/Task-List.git
+   cd task-manager
+   ```
+
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Firebase:**
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+   - Enable Firestore and Authentication (optional).
+   - Add your Firebase configuration in `src/lib/firebase.ts`:
+     ```javascript
+     const firebaseConfig = {
+       apiKey: "YOUR_API_KEY",
+       authDomain: "YOUR_AUTH_DOMAIN",
+       projectId: "YOUR_PROJECT_ID",
+       storageBucket: "YOUR_STORAGE_BUCKET",
+       messagingSenderId: "YOUR_SENDER_ID",
+       appId: "YOUR_APP_ID"
+     };
+     ```
+
+4. **Run the Application:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
+
+5. **Build for Production:**
+   ```bash
+   npm run build
+   ```
+
+---
 
 ## Project Structure
 
 ```
-src/
-├── components/        # React components
-│   ├── TaskForm.tsx  # Form for creating tasks
-│   └── TaskList.tsx  # List of tasks with sorting and filtering
-├── lib/
-│   └── firebase.ts   # Firebase configuration
-├── types/
-│   └── task.ts       # TypeScript interfaces and types
-└── App.tsx           # Main application component
+📦 TASK-LIST
+├── 📂 node_modules/          # Installed dependencies (not included in Git)
+├── 📂 src/                   # Source code directory
+│   ├── 📂 components/        # UI components
+│   │   ├── 📄 TaskEditModal.tsx  # Form for editing tasks
+│   │   ├── 📄 TaskForm.tsx       # Form for adding tasks
+│   │   ├── 📄 TaskList.tsx       # Component to display and manage tasks
+│   ├── 📂 lib/               # Library and helper functions
+│   │   ├── 📄 firebase.ts    # Firebase configuration
+│   ├── 📂 types/             # TypeScript type definitions
+│   │   ├── 📄 task.ts        # Task priority levels
+│   ├── 📄 App.tsx            # Main application component
+│   ├── 📄 index.css          # Global styles
+│   ├── 📄 main.tsx           # Application entry point
+│   ├── 📄 vite-env.d.ts      # TypeScript environment settings
+├── 📄 .gitignore             # Git ignore file
+├── 📄 eslint.config.js       # ESLint configuration
+├── 📄 index.html             # Main HTML file
+├── 📄 package.json           # Project dependencies and scripts
+├── 📄 package-lock.json      # Lockfile for dependencies
+├── 📄 postcss.config.js      # PostCSS configuration
+├── 📄 README.md              # Project documentation
+├── 📄 tailwind.config.js     # Tailwind CSS configuration
+├── 📄 tsconfig.app.json      # TypeScript configuration (App)
+├── 📄 tsconfig.json          # TypeScript configuration (General)
+├── 📄 tsconfig.node.json     # TypeScript configuration (Node)
+├── 📄 vite.config.ts         # Vite configuration file
+
 ```
 
-## Setup Instructions
+---
 
-1. Clone the repository
-2. Create a Firebase project and get your configuration
-3. Create a `.env` file in the root directory with your Firebase configuration:
+## Usage
 
-```env
-VITE_FIREBASE_API_KEY=your_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
-VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-VITE_FIREBASE_APP_ID=your_app_id
-```
+1. **Adding a Task:**
+   - In the left side of the screen, fill in the task details (title, description, priority, due date).
+   - Click "Create Task" to save the task.
 
-4. Install dependencies:
-```bash
-npm install
-```
+2. **Editing a Task:**
+   - Click the edit icon (pencil) next to the task you want to edit.
+   - Update the task details and click "Save Changes".
 
-5. Start the development server:
-```bash
-npm run dev
-```
+3. **Deleting a Task:**
+   - Click the delete icon (trash) next to the task you want to delete.
+   - Confirm the deletion in the dialog.
 
-## Development
+4. **Marking a Task as Completed:**
+   - Click the checkbox (clock icon) in the status column to mark it as completed.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
+5. **Sorting Tasks:**
+   - Use the sorting options to sort tasks by priority or due date.
+   - Select if you want a secondary sort from the options in the next list.
 
-## Firebase Setup
+6. **Searching Tasks:**
+   - Use the search bar to filter tasks by title or description.
 
-1. Create a new Firebase project
-2. Enable Firestore Database
-3. Set up Firestore security rules
-4. Add your web app to Firebase project
-5. Copy the configuration to your `.env` file
+7. **Task Changes Log:**
+   - To view the change history of the task, click the edit icon next to the task, this will show the task edit modal.
+   - To the right of the heading bar of the modal, there is a clock icon, click to show change history.
+   
+---
 
-## Contributing
+## Contributors
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+[Islam Elmasry](#Islam-Elmasry) - Software Engineer
+
+- **Email**: dr.egy2009@hotmail.com
+- **GitHub**: [IslamMasry](https://github.com/IslamMasry)
+
+---
+
+Thank you for checking out!
